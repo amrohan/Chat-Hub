@@ -33,6 +33,7 @@ Website Link 👉 [Click Me](https://chat-hub.rohan.ml)
 
 4. Create an.env file in the root directory and add your firebase config tokens there, or hard code it in firebase. initializeApp <br/>
 > **_NOTE:_** &nbsp In the assign variable, put your firebase key values.
+
     ```
     REACT_APP_apiKey = apiKey 
     REACT_APP_authDomain = authDomain
