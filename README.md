@@ -14,9 +14,7 @@ Website Link 👉 [Click Me](https://chat-hub.rohan.ml)
 
 ### Installation :
 
-1. Run this on local machine ? 
-
-    Clone this repository 
+1. Clone this repository :
     ```
      git clone https://github.com/amrohan/Chat-Hub
     ```
@@ -25,7 +23,7 @@ Website Link 👉 [Click Me](https://chat-hub.rohan.ml)
 
     `npm install or yarn install` 
 
-3. Runs the app in the development mode.
+3. Runs the app in the development mode :
 
     `npm start`
 
