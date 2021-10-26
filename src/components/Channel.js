@@ -1,18 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
-import PropTypes from 'prop-types';
-import firebase from 'firebase/app';
-import { useFirestoreQuery } from '../hooks';
+import React, { useEffect, useState, useRef } from "react";
+import PropTypes from "prop-types";
+import firebase from "firebase/app";
+import { useFirestoreQuery } from "../hooks";
 // Components
-import Message from './Message';
+import Message from "./Message";
 
 const Channel = ({ user = null }) => {
   const db = firebase.firestore();
-  const messagesRef = db.collection('messages');
+  const messagesRef = db.collection("messages");
   const messages = useFirestoreQuery(
-    messagesRef.orderBy('createdAt', 'desc').limit(100)
+    messagesRef.orderBy("createdAt", "desc").limit(100)
   );
 
-  const [newMessage, setNewMessage] = useState('');
+  const [newMessage, setNewMessage] = useState("");
 
   const inputRef = useRef();
   const bottomListRef = useRef();
@@ -25,11 +25,11 @@ const Channel = ({ user = null }) => {
     }
   }, [inputRef]);
 
-  const handleOnChange = e => {
+  const handleOnChange = (e) => {
     setNewMessage(e.target.value);
   };
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
 
     const trimmedMessage = newMessage.trim();
@@ -43,31 +43,22 @@ const Channel = ({ user = null }) => {
         photoURL,
       });
       // Clear input field
-      setNewMessage('');
+      setNewMessage("");
       // Scroll down to the bottom of the list
-      bottomListRef.current.scrollIntoView({ behavior: 'smooth' });
+      bottomListRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <div className="flex flex-col h-full">
-      <div className="overflow-auto h-full">
-        <div className="py-4 max-w-screen-lg mx-auto">
-          <div className="border-b dark:border-gray-600 border-gray-200 py-8 mb-4">
-            <div className="font-bold text-3xl text-center">
-              <p className="mb-1">Welcome to</p>
-              <p className="mb-3">ChatHub</p>
-            </div>
-            <p className="text-gray-400 text-center">
-            You can talk about anything you want.
-            </p>
-          </div>
+      <div className="overflow-x-hidden h-full">
+        <div className="py-4 max-w-screen-lg mx-auto ">
           <ul>
             {messages
               ?.sort((first, second) =>
                 first?.createdAt?.seconds <= second?.createdAt?.seconds ? -1 : 1
               )
-              ?.map(message => (
+              ?.map((message) => (
                 <li key={message.id}>
                   <Message {...message} />
                 </li>
